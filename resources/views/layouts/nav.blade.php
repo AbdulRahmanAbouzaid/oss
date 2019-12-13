@@ -44,7 +44,7 @@
 
 							<li><a href="/login" class=""><i class="fa fa-lock">
 							</i> Login</a></li>
-							<li><a href="/register" class="{{$register_active or ''}}"><i class="fa fa-lock">
+							<li><a href="/register" class=""><i class="fa fa-lock">
 							</i> Register</a></li>
 
 						@endif
