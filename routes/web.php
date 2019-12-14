@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'ProductController@index');
+
 
 
 Route::get('/register', 'AuthController@showRegisterForm');
 Route::post('/register', 'AuthController@register');
 
 Route::get('/login', 'AuthController@showLoginForm');
-Route::post('/login', 'AuthController@login');
+Route::post('/login', 'AuthController@login')->name('login');
+

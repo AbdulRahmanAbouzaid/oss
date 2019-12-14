@@ -1193,8 +1193,8 @@ h2.title {
   margin-right: 10px
 }
 
-.user_info > li > span {
-}
+/*.user_info > li > span {
+}*/
 
 .user_info input, select, textarea {
   background: #F0F0E9;
@@ -1242,4 +1242,34 @@ h2.title {
    cursor: default;
 }
 
+
+.not-selected {
+  border: 5px solid #b3afaf;
+}
+
+
+.selected {
+  border: 5px solid #27922d;
+}
+
+
+.check-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: #b3afaf;
+  font-size: 20px;
+}
+
+
+
+.order-button {
+  display: none;
+  position:fixed;
+  bottom:50px;
+  right:15px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 
