@@ -70,7 +70,7 @@
 
 						<div class="row">
 							<center>
-								<a class="btn btn-default update" href="/order/invoice">Show Bill</a>
+								<a class="btn btn-default update" href="/orders/{{$order->id}}/bill">Show Bill</a>
 								<a class="btn btn-default update" href="/order/destroy">Cancel Order</a>
 							</center>
 						</div>

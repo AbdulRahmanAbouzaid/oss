@@ -20,7 +20,7 @@ class OrderController extends Controller
         return view('orders.show', compact('order'));
     }
 
-    
+
 
 
     public function destroy()
@@ -33,5 +33,14 @@ class OrderController extends Controller
         }
 
         return redirect('/');
+    }
+
+
+
+    public function generateBill(Order $order)
+    {
+        $bill = $order->getBill();
+        $card_number = auth()->user()->paymentMethods()->first()->card_number;
+        return view('orders.bill', compact(['order', 'bill', 'card_number']));
     }
 }

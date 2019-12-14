@@ -29,3 +29,4 @@ Route::post('/products/add-to-cart', 'ProductController@addProducts');
 
 Route::get('/orders/{order}', 'OrderController@show');
 Route::get('/order/destroy', 'OrderController@destroy');
+Route::get('/orders/{order}/bill', 'OrderController@generateBill');

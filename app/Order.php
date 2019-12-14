@@ -21,10 +21,29 @@ class Order extends Model
     }
 
 
+    public function bill()
+    {
+        return $this->hasOne(Bill::class);
+    }
+
+
 
     public function getTotalPrice()
     {
         return $this->products()->sum('price');
+    }
+
+
+
+    public function getBill(Type $var = null)
+    {
+        if($bill = $this->bill){
+            return $bill;
+        }
+        return $this->bill()->create([
+            'bill_number' => hexdec(uniqid()),
+            'bill_total' => $this->getTotalPrice(),
+        ]);
     }
 
 
