@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Order;
+use App\User;
 
 class ProductController extends Controller
 {
@@ -11,6 +13,9 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+    
     public function index()
     {
         $products = Product::all();
@@ -19,4 +24,15 @@ class ProductController extends Controller
 
 
 
+    public function addProducts(Request $request)
+    {
+        $request->validate([
+            'products_ids' => 'required'
+        ]);
+
+        $order = auth()->user()->createOrFindOrder();
+        $order->products()->syncWithoutDetaching($request->get('products_ids'), ['quantity' => 1]);
+
+        return $order;
+    }
 }

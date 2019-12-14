@@ -24,3 +24,26 @@ function viewOrderButton(){
 }
 
 
+function addProducts(){
+    var selected_products = document.getElementsByClassName('selected');
+    var products_ids = [];
+    for(i = 0; i < selected_products.length; i++){
+        products_ids[i] = selected_products[i].id;
+    }
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type:'POST',
+        url:'/products/add-to-cart',
+        data:{
+            products_ids : products_ids,
+        },
+        success:function(data){
+            window.location.href = "orders/"+ data.id;
+        }
+     });
+}

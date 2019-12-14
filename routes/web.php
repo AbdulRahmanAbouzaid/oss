@@ -25,3 +25,7 @@ Route::post('/register', 'AuthController@register');
 Route::get('/login', 'AuthController@showLoginForm');
 Route::post('/login', 'AuthController@login')->name('login');
 
+Route::post('/products/add-to-cart', 'ProductController@addProducts');
+
+Route::get('/orders/{order}', 'OrderController@show');
+Route::get('/order/destroy', 'OrderController@destroy');

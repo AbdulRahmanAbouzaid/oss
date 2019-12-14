@@ -43,6 +43,12 @@ class User extends Authenticatable
     }
 
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+
     public function addUser($request)
     {
         $user = self::create([
@@ -69,5 +75,26 @@ class User extends Authenticatable
             'holder_name' => $request->get('holder_name'),
             'cvc' => $request->get('cvc')
         ]);
+    }
+
+
+
+
+    public function createOrFindOrder()
+    {
+        if($order = $this->getActiveOrder()){
+            return $order;
+        }
+
+        return $this->orders()->create([
+            'is_active' => true 
+        ]);
+    }
+
+
+
+    public function getActiveOrder()
+    {
+        return $this->orders()->where('is_active', 1)->first();
     }
 }
